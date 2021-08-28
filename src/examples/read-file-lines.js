@@ -7,11 +7,13 @@
   * @author F. de Sande
   * @since 9.Mar.2021
   * @desc Reading a text file line by line
-  *       
+  *
   * @see {@link https://nodejs.org/api/readline.html#readline_example_read_file_stream_line_by_line}
   */
 
 'use strict';
+
+/* eslint-disable */
 
 const fs = require('fs');
 const readline = require('readline');

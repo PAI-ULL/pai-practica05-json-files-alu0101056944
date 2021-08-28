@@ -1,0 +1,26 @@
+{
+  "name": "pai-practica05-json-files-alu0101056944",
+  "version": "1.0.0",
+  "description": "Create a different directory for each exercise",
+  "main": "read-file-lines.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "documentation": "jsdoc -d docs src/ -R README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PAI-ULL/pai-practica05-json-files-alu0101056944.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PAI-ULL/pai-practica05-json-files-alu0101056944/issues"
+  },
+  "homepage": "https://github.com/PAI-ULL/pai-practica05-json-files-alu0101056944#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "jsdoc": "^3.6.7"
+  }
+}
