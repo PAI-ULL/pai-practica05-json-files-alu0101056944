@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FileSystem - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-FileSystem.html">FileSystem</a></li><li class="nav-item"><a href="tutorial-Promises.html">Promises</a></li><li class="nav-item"><a href="tutorial-TerminalInput.html">TerminalInput</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-FileHandling.html">FileHandling</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-FileHandling.html#~logDirFiles">logDirFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-FileHandling.html#~logFileInfo">logFileInfo</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-FileHandling.html#~readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-FileHandling.html#~remove">remove</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-FileHandling.html#~rename">rename</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-something.html">something</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-TerminalInput.html">TerminalInput</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-TerminalInput.html#~getProcessInput">getProcessInput</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">FileSystem</h1>
+    
+
+    <section>
+
+<header>
+    
+</header>
+
+<article>
+    <h1>Getting started with Node.js FileSystem</h1>
+<p>We use <code>fs</code> Node module for file handling using either promises, callbacks or synchronous techniques. Most of the time I'll use the same four functions:</p>
+<ul>
+<li>readFileSync</li>
+<li>readFile</li>
+<li>writeFileSync</li>
+<li>writeFile</li>
+</ul>
+<p><strong>Note:</strong> Import names matter; 'fs' is the callback <strong>and synchronous</strong> API, 'fs/promises' is the Promises API.</p>
+<h3>Table of contents</h3>
+<ul>
+<li><a href="#important-notes">Important notes</a></li>
+<li><a href="#questions-and-answers">Questions and Answers</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h3>Important notes</h3>
+<ul>
+<li>
+<p>Eloquent JS's Chapter 20 describes the following <code>fs</code> functions as useful:</p>
+<ul>
+<li>readdir: Obstains the names of the files in a directory as an array.</li>
+<li>stat: For checking information about a file. Returns a Stat object.</li>
+<li>rename: Renames a file.</li>
+<li>unlink: Removes a file.</li>
+</ul>
+</li>
+<li>
+<p><strong>Important</strong> Relative paths are relative to the current working directory, which will be the directory where node was executed. On the other hand, global binding <code>__dirname</code> is assigned the script's current directory.</p>
+</li>
+<li>
+<p>It is better to do the operation assuming everything is correct and handle the errors appropiately rather than checking for the errors before the operation. For example: always read first, then if the file doesn`t exist handle it as an error inside the operation. <strong>That is because many processes may be accessing and modifying the same file so it's never safe to assume the file is in the same state it was when it was checked.</strong> (See reference B)</p>
+</li>
+<li>
+<p>Files aren't really designed to be manipulated by multiple applications at the same time.</p>
+</li>
+</ul>
+<h3>Questions and Answers</h3>
+<ol>
+<li>What happens if I try to read a non-existent file?</li>
+</ol>
+<blockquote>
+<p>An error is triggered in those cases. That's why it's important to have an error handling routine when handling files.</p>
+</blockquote>
+<ol start="2">
+<li>Do I have to include extension's when calling fs callback functions that use filenames?</li>
+</ol>
+<blockquote>
+<p>Yes.</p>
+</blockquote>
+<ol start="3">
+<li>It is suggested to use <code>access</code> function instead of <code>stat</code> if I won't manipulate the file afterwards. Why is that?</li>
+</ol>
+<blockquote>
+<p>Because access is more straightforward for checking access information and therefore could be faster than <code>stats</code> function. The latter has a higher level of abstraction and probably uses <code>access</code> too, so unless I need to know stuff like whether a path is a file or a directory I can use lower level functions if they provide what I need, in exhange of faster execution times.</p>
+</blockquote>
+<ol start="4">
+<li>What is the mode of a file?</li>
+</ol>
+<blockquote>
+<p>It's an Operating System dependent file state that represents different operations being applied to the file. For example; read, write, read and write, etc...</p>
+</blockquote>
+<h3>References</h3>
+<ul>
+<li>
+<h5>A <a href="https://nodejs.org/api/fs.html">https://nodejs.org/api/fs.html</a></h5>
+</li>
+<li>
+<h5>B <a href="https://stackoverflow.com/questions/54514627/nodejs-fs-stat-or-fs-access-to-check-if-a-folder-exists">https://stackoverflow.com/questions/54514627/nodejs-fs-stat-or-fs-access-to-check-if-a-folder-exists</a></h5>
+</li>
+</ul>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sun Aug 29 2021 14:24:52 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

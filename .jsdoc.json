@@ -1,0 +1,12 @@
+{
+  "opts": {
+    "recurse": true,
+    "destination": "./docs/",
+    "tutorials": "./tutorials/",
+    "readme": "./README.md",
+    "template": "node_modules/minami"
+  },
+  "source": {
+    "include": ["./src"]
+  }
+}

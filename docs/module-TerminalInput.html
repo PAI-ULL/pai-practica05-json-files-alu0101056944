@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>TerminalInput - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,60 +29,306 @@
 
 <div id="main">
     
+    <h1 class="page-title">TerminalInput</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Read input passed on command line.</div>
+        
+
+        
+            
+<div class="section-method">
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>29.august.2021</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Marcos Barrios</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="terminalinput.js.html">terminalinput.js</a>, <a href="terminalinput.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~getProcessInput"><span class="type-signature">(inner) </span>getProcessInput<span class="signature">(index)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+    <p class="summary">Get input value from terminal.</p>
     
 
 
 
+<div class="description">
+    Make sure index isn't negative or outside the allowed range
+   [0, process.argv.length], then use it to access the input value.
+</div>
 
 
 
 
 
+<dl class="details">
 
     
 
+    
 
-    <section class="readme">
-        <article><h1>PAI Lab Fourth Assignment: JSON File Handling.</h1>
-<p>JSON file handling and Array method's practice. Strings are practiced too. FileSystem and Readline API are included by Node.js and they are also used intensely in this assignment.</p>
-<p>This directory is organised as follows:</p>
-<pre class="prettyprint source"><code>  .
-  ├── docs          # Documentation and tutorials
-  ├── resources     # Resources used for the assignment
-  ├── src           # Source code
-  ├── tutorials     # Tutorials about stuff necessary for the completion of the assignment
-  ├── bin           # Executable scripts
+    
 
-</code></pre>
-<h3>Summary</h3>
-<p>Initially tasks necessary to implement wc were defined:</p>
-<p>Tasks:</p>
-<ul>
-<li>Obtain input from terminal</li>
-<li>Obtain the file's content as a string</li>
-<li>Process the string to obtain the lines, words and characters.</li>
-</ul>
-<p>Testing of FileSystem functions started while filling up JSDoc tutorials for display on the documentation page. Various functions were defined using each of the core functions from fs;</p>
-<ul>
-<li>readFile</li>
-<li>readdir</li>
-<li>stat</li>
-<li>rename</li>
-<li>unlink</li>
-</ul>
-<p>All while preparing the overall structure of the project. JSDoc config file setup and separation of source code files on modules for testing different parts of the FileSystem API. Initially tutorials is given a main focus in an attempt to minimize confusion. Eslint was also configured as always.</p>
-<h3>About</h3>
-<p>Marcos Jesús Barrios Lorenzo, University of La Laguna's Software Engineering student.</p>
-<p><strong>Contact me:</strong> marcos.barrios.15@ull.edu.es</p>
-<br></article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="terminalinput.js.html">terminalinput.js</a>, <a href="terminalinput.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Index position of the input word.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Obtain a string word that belongs to the given executable's
+   command-line options.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>filereader.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,60 +29,122 @@
 
 <div id="main">
     
+    <h1 class="page-title">filereader.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Programación de Aplicaciones Interactivas
+  *
+ * @author Marcos Barrios
+ * @since 29.august.2021
+ * @desc Read a file's content and obtain it as string.
+ * @module FileHandling
+ */
+'use strict';
 
+const fs = require('fs');
 
+/**
+ * Open a file and stop execution until a string with it's content
+ * has been read. Make a sync read operation and directly output it.
+ * @summary Obtain a file's content as string using sync methods.
+ * @param {string} file String name of a file.
+ * @throws {Error} when read failed.
+ * @return {string} Content of the file as a string.
+ */
+function readFile(file) {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+}
 
+/**
+ * Call fs's asynchronous stat function to obtain a Stat object and then
+ * make a console log call with string information from it
+ * @summary Log to the terminal important file info.
+ * @param {string} filename Name of the file including extension.
+ */
+function logFileInfo(filename) {
+  fs.stat(`${filename}`, (err, stat) => {
+    if (err) {
+      throw new Error(error);
+    }
+    const fileInfo = 'Is directory? ' + stat.isDirectory() +
+        ' , UID: ' + stat.uid + ' ,GID: ' + stat.gid;
+    console.log(fileInfo);
+  });
+}
 
+/**
+ * Call fs.rename() on the path with the newname and the old path, then log the
+ * error.
+ * @summary Rename a path (directory or file).
+ * @param {string} path Path to the target.
+ * @param {string} newname New name of the target.
+ */
+function rename(path, newname) {
+  fs.rename(path, newname, (err) => {
+    if (err) {
+      throw new Error('Error renaming path' + err);
+    }
+    console.log('Rename of path ' + path + ' to ' + newname + ' completed.');
+  });
+}
 
+/**
+ * Call unlick from fs and pass it the path to delete. Won't work with
+ * neither empty nor not empty directories.
+ * @summary Delete a file.
+ * @param {string} filepath Path to the file.
+ */
+function remove(filepath) {
+  fs.unlink(filepath, (err) => {
+    if (err) throw err;
+    console.log(`${filepath} was successfully deleted`);
+  });
+}
 
+/**
+ * Use fs.readdir() to asynchronously console.log() the output array of
+ * strings with the names of each file.
+ * @summary Read a directory and output to terminal the names of each file
+ *    in it.
+ * @throws {Error} When the file doesn`t exist.
+ * @param {string} dirname Absolute or relative path to the directory.
+ */
+function logDirFiles(dirname) {
+  fs.readdir(`${dirname}`, (err, files) => {
+    if (err) {
+      throw new Error('An error occured while reading the directory: ' + err);
+    }
+    console.log(files);
+  });
+}
 
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>PAI Lab Fourth Assignment: JSON File Handling.</h1>
-<p>JSON file handling and Array method's practice. Strings are practiced too. FileSystem and Readline API are included by Node.js and they are also used intensely in this assignment.</p>
-<p>This directory is organised as follows:</p>
-<pre class="prettyprint source"><code>  .
-  ├── docs          # Documentation and tutorials
-  ├── resources     # Resources used for the assignment
-  ├── src           # Source code
-  ├── tutorials     # Tutorials about stuff necessary for the completion of the assignment
-  ├── bin           # Executable scripts
-
+module.exports = {
+  logDirFiles,
+  readFile,
+  logFileInfo,
+  rename,
+  remove,
+};
 </code></pre>
-<h3>Summary</h3>
-<p>Initially tasks necessary to implement wc were defined:</p>
-<p>Tasks:</p>
-<ul>
-<li>Obtain input from terminal</li>
-<li>Obtain the file's content as a string</li>
-<li>Process the string to obtain the lines, words and characters.</li>
-</ul>
-<p>Testing of FileSystem functions started while filling up JSDoc tutorials for display on the documentation page. Various functions were defined using each of the core functions from fs;</p>
-<ul>
-<li>readFile</li>
-<li>readdir</li>
-<li>stat</li>
-<li>rename</li>
-<li>unlink</li>
-</ul>
-<p>All while preparing the overall structure of the project. JSDoc config file setup and separation of source code files on modules for testing different parts of the FileSystem API. Initially tutorials is given a main focus in an attempt to minimize confusion. Eslint was also configured as always.</p>
-<h3>About</h3>
-<p>Marcos Jesús Barrios Lorenzo, University of La Laguna's Software Engineering student.</p>
-<p><strong>Contact me:</strong> marcos.barrios.15@ull.edu.es</p>
-<br></article>
+        </article>
     </section>
-
-
 
 
 
