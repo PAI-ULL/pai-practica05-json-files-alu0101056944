@@ -25,9 +25,7 @@ function readFile(file) {
   try {
     return fs.readFileSync(file, 'utf8');
   } catch (error) {
-    if (error) {
-      console.log(error);
-    }
+    throw error;
   }
 }
 

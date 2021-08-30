@@ -4,7 +4,10 @@
   "description": "Create a different directory for each exercise",
   "main": "read-file-lines.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
+    "validate": "cat codecov.yml | curl --data-binary @- https://codecov.io/validate",
+    "report": "nyc --reporter=json mocha",
+    "codecov": "curl -s https://codecov.io/bash | bash",
     "documentation": "jsdoc -c .jsdoc.json"
   },
   "repository": {
@@ -19,13 +22,12 @@
   },
   "homepage": "https://github.com/PAI-ULL/pai-practica05-json-files-alu0101056944#readme",
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.7",
-    "minami": "^1.2.3"
-  },
-  "dependencies": {
-    "chai": "^4.3.4",
-    "mocha": "^9.1.1"
+    "minami": "^1.2.3",
+    "mocha": "^9.1.1",
+    "nyc": "^15.1.0"
   }
 }

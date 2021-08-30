@@ -11,7 +11,7 @@
 const Mocha = require('mocha');
 const expect = require('chai').expect;
 
-const {readFile} = require('../src/examples/filereader.js');
+const {readFile} = require('../src/filereader.js');
 
 describe('#readfile', () => {
   it('Works with one line files', () => {
@@ -20,9 +20,13 @@ describe('#readfile', () => {
 
   it('Works with files that only have one character', () => {
     expect(readFile('resources/onlyonechar.txt')).to.equal(' ');
-  })
+  });
 
-  it('Works with empty files ', () => {
+  it('Works with empty files.', () => {
     expect(readFile('resources/empty.txt')).to.equal('');
-  })
+  });
+
+  it('Works with non existent files.', () => {
+    expect(() => readFile('resources/nonexistent.txt')).to.throw(Error);
+  });
 });
